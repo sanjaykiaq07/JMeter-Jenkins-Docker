@@ -3,17 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Checkout GitHub Code') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Jenkins checked out the GitHub code'
+                bat 'docker build -t jmeter-ftp-test .'
             }
         }
 
-        stage('Run JMeter Test') {
+        stage('Run JMeter in Docker') {
             steps {
-                bat '''
-                "C:\\Users\\Kiaq_Lap_25\\Downloads\\apache\\bin\\jmeter.bat" -n -t "Ftp Request.jmx" -l "ftp-results.jtl"
-                '''
+                bat 'docker run --rm jmeter-ftp-test'
             }
         }
 
