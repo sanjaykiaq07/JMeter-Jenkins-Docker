@@ -5,13 +5,15 @@ pipeline {
 
         stage('Checkout GitHub Code') {
             steps {
-                echo 'Jenkins is checking out the GitHub code'
+                echo 'Jenkins checked out the GitHub code'
             }
         }
 
         stage('Run JMeter Test') {
             steps {
-                echo 'JMeter test will run here'
+                bat '''
+                "C:\\Users\\Kiaq_Lap_25\\Downloads\\apache\\bin\\jmeter.bat" -n -t "Ftp Request.jmx" -l "ftp-results.jtl"
+                '''
             }
         }
 
