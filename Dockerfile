@@ -2,4 +2,4 @@ FROM justb4/jmeter:5.5
 
 WORKDIR /test
 
-COPY FtpRequest.jmx /test/FtpRequest.jmx
+COPY RestfulBooker_3Step.jmx /test/RestfulBooker_3Step.jmx

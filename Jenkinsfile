@@ -6,7 +6,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 bat '''
-                "C:\\Users\\Kiaq_Lap_25\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t jmeter-ftp-test .
+                "C:\\Users\\Kiaq_Lap_25\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t jmeter-restful-test .
                 '''
             }
         }
@@ -18,9 +18,9 @@ pipeline {
 
                 "C:\\Users\\Kiaq_Lap_25\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run --rm ^
                 -v "%WORKSPACE%\\results:/results" ^
-                jmeter-ftp-test ^
-                -n -t /test/FtpRequest.jmx ^
-                -l /results/ftp-results.jtl
+                jmeter-restful-test ^
+                -n -t /test/RestfulBooker_3Step.jmx ^
+                -l /results/restful-results.jtl
                 '''
             }
         }
@@ -33,8 +33,8 @@ pipeline {
                 "C:\\Users\\Kiaq_Lap_25\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run --rm ^
                 -v "%WORKSPACE%\\results:/results" ^
                 -v "%WORKSPACE%\\html-report:/html-report" ^
-                jmeter-ftp-test ^
-                -g /results/ftp-results.jtl ^
+                jmeter-restful-test ^
+                -g /results/restful-results.jtl ^
                 -o /html-report
                 '''
             }
